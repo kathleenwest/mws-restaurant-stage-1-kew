@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/responsive.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet" type="text/css">
+
+  <title>Restaurant Reviews</title>
+</head>
+
+<body class="container">
+
+  <header> 
+    <nav>
+      <h1>
+        <a href="/">Restaurant Reviews</a>
+      </h1>	  
+    </nav>	
+  </header>
+
+  <main id="maincontent"> 
+    <section id="map-container" aria-labelledby="aria-map-description" role="application">
+      <div id="map"></div>
+    </section>
+
+    <label id="aria-map-description" class="aria-label">interactive map user interface</label>
+    
+    <section>
+      <div class="filter-options">
+        <h2>Filter Results</h2>
+		
+		    <div class="filter-selects">
+          <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" aria-labelledby="aria-neighborhoods-label">
+            <option value="all">All Neighborhoods</option>
+          </select>
+          <label id="aria-neighborhoods-label" class="aria-label">filter results by neighborhood</label>
+		
+          <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" aria-labelledby="aria-cuisines-label">
+            <option value="all">All Cuisines</option>
+          </select>
+          <label id="aria-cuisines-label" class="aria-label">filter results by cuisines</label>
+		    </div>
+      </div>
+	  
+		  <ul id="restaurants-list" class="restaurant-results"></ul>	  
+    </section>
+  </main>
+
+  <script type="application/javascript" charset="utf-8" src="js/dbhelper.js"></script>
+  <script type="application/javascript" charset="utf-8" src="js/main.js"></script>
+<!-- Google Maps -->
+  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhXhPjZlCsSU-ByZO61Pw24Pg0-rBnB20&libraries=places&callback=initMap"></script>
+
+  <footer id="footer">
+    Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+  </footer>
+  
+</body>
+</html>

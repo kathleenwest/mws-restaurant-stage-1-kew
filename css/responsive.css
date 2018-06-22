@@ -1,0 +1,55 @@
+@charset "utf-8";
+/* CSS Document */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 502px) {
+
+	.filter-selects {	
+		margin: 0px 30px;
+	}
+	
+	#restaurant-container{
+		flex-flow: column;
+	}
+
+	.restaurant-pretty {
+		width:100%;		
+	}
+
+	.restaurant-info {
+		width:100%;
+	}
+	
+	#restaurant-img {
+		height: 200px;
+		width: auto;		
+	}
+	
+}
+
+@media screen and (min-width: 503px) {
+
+	#restaurants-list li {
+	  max-width: 40%;
+	}
+
+	#restaurant-address {
+		font-size: 12pt;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+}
+
+@media screen and (min-width: 900px) {
+
+	.container, .inside {
+		width: 900px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	#restaurants-list li {
+	  max-width: 25%;
+	}
+		
+}
