@@ -13,40 +13,48 @@
 </head>
 
 <body class="container">
-
+  
   <header> 
     <nav>
       <h1>
-        <a href="/">Restaurant Reviews</a>
+        <a href="/" tabindex="1">Restaurant Reviews</a>
       </h1>	  
     </nav>	
   </header>
 
   <main id="maincontent"> 
+
+   <section id="map-container" aria-hidden="true">
+          <div id="map" aria-hidden="true"></div>
+   </section>
+    
+  <!-- 
     <section id="map-container" aria-labelledby="aria-map-description" role="application">
       <div id="map"></div>
-    </section>
+      <label id="aria-map-description" class="aria-label">interactive map user interface</label>
+    </section> 
+    -->
 
-    <label id="aria-map-description" class="aria-label">interactive map user interface</label>
-    
-    <section>
+    <section role="main">
       <div class="filter-options">
-        <h2>Filter Results</h2>
-		
+        <h2 tabindex="0" aria-labelledby="aria-filterresults-label">Filter Results</h2>
+        <label id="aria-filterresults-label" class="aria-label">Section Filter Results</label>
+			
 		    <div class="filter-selects">
-          <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" aria-labelledby="aria-neighborhoods-label">
+          <select tabindex="0" id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" aria-labelledby="aria-neighborhoods-label">
             <option value="all">All Neighborhoods</option>
           </select>
           <label id="aria-neighborhoods-label" class="aria-label">filter results by neighborhood</label>
 		
-          <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" aria-labelledby="aria-cuisines-label">
+          <select tabindex="0" id="cuisines-select" name="cuisines" onchange="updateRestaurants()" aria-labelledby="aria-cuisines-label">
             <option value="all">All Cuisines</option>
           </select>
           <label id="aria-cuisines-label" class="aria-label">filter results by cuisines</label>
 		    </div>
       </div>
 	  
-		  <ul id="restaurants-list" class="restaurant-results"></ul>	  
+      <ul tabindex="0" id="restaurants-list" class="restaurant-results" aria-labelledby="filter-results-list"></ul>
+      <label id="filter-results-list" class="aria-label">Filter Results</label>	  
     </section>
   </main>
 
@@ -55,9 +63,10 @@
 <!-- Google Maps -->
   <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhXhPjZlCsSU-ByZO61Pw24Pg0-rBnB20&libraries=places&callback=initMap"></script>
 
-  <footer id="footer">
+  <footer id="footer" aria-labelledby="aria-footer" tabindex="0">
     Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
   </footer>
+  <label id="aria-footer" class="aria-label">Footer Copyright Statement</label>
   
 </body>
 </html>

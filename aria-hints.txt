@@ -1,0 +1,8 @@
+skip-link to bypass the map
+tabindexes
+role in the map
+
+aria-live added for when the filter is used, to announce number of results on the search
+
+jump from header to filters section
+descriptive buttons

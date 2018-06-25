@@ -148,11 +148,11 @@ createRestaurantHTML = (restaurant) => {
   const imgurl3x = imgurlbase + "_900.jpg";
   image.src = imgurl1x;
   image.srcset = `${imgurl1x} 320w, ${imgurl2x} 503w, ${imgurl3x} 900w`;
-  image.sizes = `(max-width: 320px) 320px, (max-width: 503px) 503px, 900px`;
+  image.sizes = `(max-width: 503px) 320px, (max-width: 900px) 503px, 900px`;
   image.alt = restaurant.name + " restaurant marketing photograph";										  										
   li.append(image);
 
-  const name = document.createElement('h1');
+  const name = document.createElement('h2');
   name.innerHTML = restaurant.name;
   li.append(name);
 
@@ -167,18 +167,26 @@ createRestaurantHTML = (restaurant) => {
   li.append(address);
 
  
-  /*const more = document.createElement('a');
-  more.innerHTML = 'View Details';
-  more.href = DBHelper.urlForRestaurant(restaurant);*/
-
   const more = document.createElement('button');
+  var label_attribute = document.createAttribute("aria-labelledby");
+  var restaurant_name = restaurant.name;
+  restaurant_name = restaurant_name.replace(/\s+/g, '');       
+  label_attribute.value = restaurant_name + "_label";                          
+  more.setAttributeNode(label_attribute);                     
   more.innerHTML = 'View Details';
+
+  const aria_label = document.createElement('label');
+  aria_label.id = restaurant_name + "_label";
+  aria_label.className = "aria-label";
+  aria_label.innerHTML = "Link: Restaurant " + restaurant.name + " Details. Neighborhood: " + restaurant.neighborhood + " Address: " + restaurant.address;
+
   more.onclick = function() {
     const url = DBHelper.urlForRestaurant(restaurant);
     window.location = url;
   }
 
   li.append(more)
+  li.append(aria_label)
 
   return li
 }

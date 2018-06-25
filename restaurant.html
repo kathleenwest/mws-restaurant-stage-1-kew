@@ -18,14 +18,16 @@
     <!-- Beginning nav -->
     <nav>
 		<h1>
-      <a href="/">Restaurant Reviews</a>
+      <a href="/" tabindex="1">Restaurant Reviews</a>
     </h1>
-	  <!-- Beginning breadcrumb -->
+    <!-- Beginning breadcrumb -->
+    <nav aria-label="Breadcrumb">
     <ul id="breadcrumb" aria-label="aria-breadcrumb">
       <li>
         <a href="/">Home</a>
       </li>
     </ul>
+  </nav>
     <!-- End breadcrumb -->
     </nav>
     <!-- End nav -->
@@ -33,42 +35,56 @@
   <!-- End header -->
 
   <!-- Beginning main -->
-  <main id="maincontent">
+  <main id="maincontent" role="main" tabindex="0" aria-labelledby="maincontent_label">
+  <label id="maincontent_label" class="aria-label">Main Content</label>
     <!-- Beginning restaurant -->
-    <section id="restaurant-container">
+    <section id="restaurant-container" aria-labelledby="container_label">
+      <label id="container_label" class="aria-label">Section Restaurant Information</label>
 	    <div class="restaurant-pretty">
-        <h2 id="restaurant-name"></h2>
-        <img id="restaurant-img">
+        <h2 id="restaurant-name" tabindex="0"></h2>
+        <img id="restaurant-img" tabindex="0">
   	  </div>
 	
 	    <div class="restaurant-info">
-        <p id="restaurant-cuisine"></p>
-        <p id="restaurant-address" aria-labelledby="aria-restaurant-address-label"></p>
-        <label id="aria-restaurant-address-label" class="aria-label">address</label>
-       <table id="restaurant-hours" aria-labelledby="restaurant-hours-label"></table>
-       <label id="restaurant-hours-label" class="aria-label">hours of operation</label>
+        <p id="restaurant-cuisine" tabindex="0" aria-labelledby="cuisine_label"></p>
+        <label id="cuisine_label" class="aria-label">Restaurant Cuisine</label>
+        <p id="restaurant-address" tabindex="0" aria-labelledby="address_label"></p>
+        <label id="address_label" class="aria-label">Restaurant Address</label>
+       <table id="restaurant-hours" tabindex="0" aria-labelledby="hours_label"></table>
+       <label id="hours_label" class="aria-label">Restaurant Hours</label>
 	    </div>  
     </section>
     <!-- end restaurant -->
   
     <!-- Beginning map -->
-    <section id="map-container" aria-labelledby="aria-map-description" role="application">
-      <div id="map"></div>
+    <section id="map-container" aria-hidden="true">
+      <div id="map" aria-hidden="true"></div>
     </section>
-    <label id="aria-map-description" class="aria-label">map user interface</label>	
+
     <!-- End map -->
-	
+  
+     <!-- Beginning map 
+     <section id="map-container" aria-labelledby="aria-map-description" role="application">
+        <div id="map"></div>
+      </section>
+      <label id="aria-map-description" class="aria-label">map user interface</label>	
+     End map -->
+
+
     <!-- Beginning reviews -->
-    <section id="reviews-container">
-      <ul id="reviews-list"></ul>
+    <section id="reviews-container" tabindex="0" aria-labelledby="reviews_label">
+      <label id="reviews_label" class="aria-label">Section Reviews</label>
+      <ul id="reviews-list" tabindex="0" aria-labelledby="reviews_list_label"></ul>
+      <label id="reviews_list_label" class="aria-label">List of Reviews</label>
     </section>
     <!-- End reviews -->
   </main>
   <!-- End main -->
 
   <!-- Beginning footer -->
-  <footer id="footer">
-    Copyright (c) 2017 <a href="/"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
+  <footer id="footer" tabindex="0" aria-labelledby="footer_label">
+      <label id="footer_label" class="aria-label">Footer Copyright Statement</label>
+    Copyright (c) 2017 <a href="/" tabindex="0"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
   </footer>
   <!-- End footer -->
 
