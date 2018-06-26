@@ -1,5 +1,4 @@
 // Define the Caches
-var cacheID = "mws-restaaurant-phase1";
 var staticCacheName = 'mws-restaurant-static-v1';
 var contentImgsCache = 'mws-restaurant-content-imgs';
 var allCaches = [staticCacheName, contentImgsCache];
@@ -8,7 +7,6 @@ self.addEventListener("install", function(event) {
   event.waitUntil(
     caches.open(staticCacheName).then(function(cache) {
     return cache.addAll([
-      '/skeleton',
       'index.html',
       'restaurant.html',
       '/css/main.css',
@@ -17,7 +15,7 @@ self.addEventListener("install", function(event) {
       '/js/main.js',
       '/js/restaurant_info.js',
       '/js/register.js',
-      'https://normalize-css.googlecode.com/svn/trunk/normalize.css',
+      '//normalize-css.googlecode.com/svn/trunk/normalize.css',
       'https://fonts.googleapis.com/css?family=Roboto:300,400,500'
     ])
       .catch(error => {
@@ -41,6 +39,12 @@ self.addEventListener('activate', function(event) {
   );
 });
 
+self.addEventListener('fetch', (event) => {
+  event.respondWith(caches.match(event.request)
+    .then(cachedResponse => cachedResponse || fetch(event.request)));
+ });
+
+/* Tried to do the skeleton thingie and failed
 self.addEventListener('fetch', function(event) {
     //Respond to requests for the root page with the page skeleton from the cache
     var requestUrl = new URL(event.request.url);
@@ -65,6 +69,7 @@ self.addEventListener('fetch', function(event) {
     })
   );
 });
+*/
 
 function servePhoto(request) {
   var storageUrl = request.url.replace(/-\d+px\.jpg$/, '');
