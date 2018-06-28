@@ -1,7 +1,9 @@
 // Define the Caches
-var staticCacheName = 'mws-restaurant-static-v1';
-var contentImgsCache = 'mws-restaurant-content-imgs';
-var allCaches = [staticCacheName, contentImgsCache];
+var staticCacheName = 'mws-restaurant-static-v';
+// Set Get Random number for Cache ID
+ var randomNumberBetween0and19999 = Math.floor(Math.random() * 20000);
+ var cache_id = randomNumberBetween0and19999;
+ staticCacheName += cache_id;
 
 self.addEventListener("install", function(event) {
   event.waitUntil(
@@ -14,13 +16,14 @@ self.addEventListener("install", function(event) {
       '/js/dbhelper.js',
       '/js/main.js',
       '/js/restaurant_info.js',
+      '/img/*',
       '/js/register.js',
       '//normalize-css.googlecode.com/svn/trunk/normalize.css',
       'https://fonts.googleapis.com/css?family=Roboto:300,400,500'
     ])
-      .catch(error => {
-        console.log("Opening Cache Failed: " + error + " May need to Reload");
-      });
+    .catch(error => {
+      console.log("Opening Main Cache Failed: " + error + " May need to Reload");
+    });
   }));
 });
 
@@ -30,7 +33,7 @@ self.addEventListener('activate', function(event) {
       return Promise.all(
         cacheNames.filter(function(cacheName) {
           return cacheName.startsWith('mws-restaurant-') &&
-                 !allCaches.includes(cacheName);
+                 cacheName != staticCacheName;
         }).map(function(cacheName) {
           return caches.delete(cacheName);
         })
@@ -39,52 +42,26 @@ self.addEventListener('activate', function(event) {
   );
 });
 
-self.addEventListener('fetch', (event) => {
-  event.respondWith(caches.match(event.request)
-    .then(cachedResponse => cachedResponse || fetch(event.request)));
- });
 
-/* Tried to do the skeleton thingie and failed
 self.addEventListener('fetch', function(event) {
-    //Respond to requests for the root page with the page skeleton from the cache
-    var requestUrl = new URL(event.request.url);
-  
-    //Only intercept requests from the same origin (i.e. Don't intercept Google Fonts requests, or any third party request like that)
-    if (requestUrl.origin === location.origin) {
-      //Check if the request is for the root page
-      if (requestUrl.pathname === '/') {
-        //Respond with the cached skeleton, which will be there as it is now cached as part of the install step
-        event.respondWith(caches.match('/skeleton'));
-        return;
-      }
-      if (requestUrl.pathname.startsWith('/img/')) {
-        event.respondWith(servePhoto(event.request));
-        return;
-      }
-    }
-
-  event.respondWith(
-    caches.match(event.request).then(function(response) {
-      return response || fetch(event.request);
-    })
-  );
-});
-*/
-
-function servePhoto(request) {
-  var storageUrl = request.url.replace(/-\d+px\.jpg$/, '');
-
-  return caches.open(contentImgsCache).then(function(cache) {
-    return cache.match(storageUrl).then(function(response) {
-      if (response) return response;
-
-      return fetch(request).then(function(networkResponse) {
-        cache.put(storageUrl, networkResponse.clone());
-        return networkResponse;
+  event.respondWith(caches.match(event.request).then(function(response) {
+    if (response !== undefined) {
+      return response;
+    } else {
+      return fetch(event.request).then(function (response) {
+        let responseClone = response.clone();
+        
+        caches.open(staticCacheName).then(function (cache) {
+          cache.put(event.request, responseClone);
+        });
+        return response;
+      }).catch(function () {
+        return caches.match('/img/brokeinternet.jpg');
       });
-    });
-  });
-}
+    }
+  }));
+});
+
 
 
  
