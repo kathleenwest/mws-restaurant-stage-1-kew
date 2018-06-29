@@ -10,6 +10,7 @@ body, html {
   position: relative;
   width: 100%;
   height: 100%;
+  overflow-x: hidden !important;
 }
 
 .container {
@@ -259,7 +260,8 @@ nav h1 a {
   width: auto;
   display: flex;
   flex-wrap: wrap;
-  min-width: 320px;		
+  min-width: 320px;
+  overflow-x: hidden !important;
 }
 
 .inside #map-container { 
