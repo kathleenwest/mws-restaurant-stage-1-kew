@@ -8,6 +8,13 @@ Grader Comments
 see https://github.com/kathleenwest/mws-restaurant-stage-1-kew/blob/master/testing/nowhitespace.jpg
 It is shown from my image that the app and code adequately provides an auto-margin after 900px 
 If you still have an issue with this, send a screen capture, and detailed instructions on how to re-create your observence.
+---------
+"Also, need to take care of horizontal scroll on restaurant page"
+
+Check your browser settings or use the Google developer tools to verify. The restaurant page does not have scroll bar issues as observed using the google developer tools on the site. I attached some screen captures. If you still have an issue with this, send a screen capture, and detailed instructions on how to re-create your observence. 
+
+https://github.com/kathleenwest/mws-restaurant-stage-1-kew/blob/master/testing/320pxwide.jpg
+https://github.com/kathleenwest/mws-restaurant-stage-1-kew/blob/master/testing/524pxwide.jpg
 -------------------------------------
 Accessibility: Google Maps wis hidden the Accessibility Tree but I added the application role per guidance of my mentor. 
 -------------------------------------
