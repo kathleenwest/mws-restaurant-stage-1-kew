@@ -22,7 +22,7 @@ self.addEventListener("install", function(event) {
       'https://fonts.googleapis.com/css?family=Roboto:300,400,500'
     ])
     .catch(error => {
-      console.log("Opening Main Cache Failed: " + error + " May need to Reload");
+      
     });
   }));
 });
@@ -43,24 +43,48 @@ self.addEventListener('activate', function(event) {
 });
 
 
-self.addEventListener('fetch', function(event) {
-  event.respondWith(caches.match(event.request).then(function(response) {
-    if (response !== undefined) {
-      return response;
-    } else {
-      return fetch(event.request).then(function (response) {
-        let responseClone = response.clone();
-        
-        caches.open(staticCacheName).then(function (cache) {
-          cache.put(event.request, responseClone);
-        });
-        return response;
-      }).catch(function () {
-        return caches.match('/img/brokeinternet.jpg');
-      });
-    }
-  }));
-});
+self.addEventListener('fetch', 
+function(event) 
+{
+  event.respondWith
+  (    
+    caches.match(event.request)
+    .then
+    (
+      function(response) 
+      {
+        if (response !== undefined) 
+        {
+          return response;
+        } 
+      
+        else 
+        {        
+          return fetch(event.request).then
+          (
+              function (response) 
+              {
+                let responseClone = response.clone();
+                
+                caches.open(staticCacheName)
+                .then
+                (
+                  function (cache) 
+                  {
+                    cache.put(event.request, responseClone);
+                  }
+                );
+                return response;
+              }
+          );
+        }
+      }
+    ) // end of promise for cache match
+      
+  ); // end of respond with
+
+}
+);
 
 
 
