@@ -1,27 +1,13 @@
 # mws-restaurant-stage-1-kew
-GRADER READ THIS FIRST
+-----------------------------
 Responsive Images were designed for a DPR setting of 1.0. When testing under Google Chrome Tools make sure your DPR setting is set to 1.0.
 -------------------------------------
-Grader Comments
-"There is whole lot of space left on bigger screens. You may want to take a look there."
------
-see https://github.com/kathleenwest/mws-restaurant-stage-1-kew/blob/master/testing/nowhitespace.jpg
-It is shown from my image that the app and code adequately provides an auto-margin after 900px 
-If you still have an issue with this, send a screen capture, and detailed instructions on how to re-create your observence.
----------
-"Also, need to take care of horizontal scroll on restaurant page"
-
-Check your browser settings or use the Google developer tools to verify. The restaurant page does not have scroll bar issues as observed using the google developer tools on the site. I attached some screen captures. If you still have an issue with this, send a screen capture, and detailed instructions on how to re-create your observence. 
-
-https://github.com/kathleenwest/mws-restaurant-stage-1-kew/blob/master/testing/320pxwide.jpg
-https://github.com/kathleenwest/mws-restaurant-stage-1-kew/blob/master/testing/524pxwide.jpg
--------------------------------------
-Accessibility: Google Maps wis hidden the Accessibility Tree but I added the application role per guidance of my mentor. 
+Accessibility: Google Maps was hidden the Accessibility Tree but I added the application role per guidance of my mentor. 
 -------------------------------------
 Service Worker Notes and Offline Capability: Works but there is a visible warning/error in the console log
 --------------------------
 Service Worker was verified to work offline and store/retrieve the cache properly
-There is a known bug/issue with the service worker trying to store/retrieve the google maps api resources and neither my mentor or any other mobile web students or help on slack is able to help me with solutions to get rid of the warning that is visible only in the console log and only when the service worker is operating in offline mode. They say this should be ignored. Also, I have tried to catch this error/warning in every place in the code but it did not resolve the error/warning. There is no fix for this issue and it needs to be ignored in the grading rubric. 
+There is a known bug/issue with the service worker trying to store/retrieve the google maps api resources and neither my mentor or any other mobile web students or help on slack is able to help me with solutions to get rid of the warning that is visible only in the console log and only when the service worker is operating in offline mode. They say this should be ignored. Also, I have tried to catch this error/warning in every place in the code but it did not resolve the error/warning. There is currently no fix for this issue. 
 ---------------
 Ignore this in the Console Log 
 -----------------
